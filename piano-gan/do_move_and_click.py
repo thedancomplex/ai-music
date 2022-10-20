@@ -3,6 +3,7 @@ import codecs
 import pyautogui as pa
 import time as t
 import sys
+import random
 
 # Website: https://codepen.io/lofaro/full/QWmRPJr
 
@@ -31,6 +32,11 @@ class AiPiano:
 
   def __init__(self):
     pass
+
+  def getTypeRand(self):
+    ri = random.randint(0,len(self.types)-1)
+    return self.types[ri]
+    
 
   def setKey(self,theKey=None):
     if theKey == None:
@@ -101,15 +107,18 @@ class AiPiano:
     for x in numOut:
       strOut.append(self.chromatic[x])
 
-    print(strOut)
-
     return strOut
 
 
 def main():
   mus = AiPiano()
 
-  mus.getProgression('major','A')
+  prog = mus.getProgression('major','A', 5)
+
+  print(prog)
+
+  for i in range(20):
+    print(mus.getTypeRand())
 
 #
 #  for x in mus.chromatic:
