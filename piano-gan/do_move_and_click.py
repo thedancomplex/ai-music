@@ -21,6 +21,8 @@ class AiPiano:
 
   types     = ['Ionlan', 'Dorian', 'Phryglan', 'Lydlan', 'Mixolydlan', 'Aeollan', 'Locrian']
 
+  scaleType = ['major', 'minor', 'dom7', 'dom', 'dim7', 'dim']
+
   speed = 0.5
 
   major = [0, 4, 7]
@@ -33,10 +35,17 @@ class AiPiano:
   def __init__(self):
     pass
 
+  def getScaleTypeRand(self):
+    ri = random.randint(0,len(self.scaleType)-1)
+    return self.scaleType[ri]
+    
   def getTypeRand(self):
     ri = random.randint(0,len(self.types)-1)
     return self.types[ri]
     
+  def getKeyRand(self):
+    ri = random.randint(0,len(self.chromatic)-1)
+    return self.chromatic[ri]
 
   def setKey(self,theKey=None):
     if theKey == None:
@@ -109,16 +118,51 @@ class AiPiano:
 
     return strOut
 
+  def getLen(self):
+    ri = random.randint(0,7)
+    ri += 3
+    return ri
+    
+
+  def getSongBase(self):
+    theLen       = self.getLen()
+    theType      = self.getTypeRand()
+    theScaleType = self.getScaleTypeRand()
+    theKey       = self.getKeyRand()
+    progression  = self.getProgression(theType=theScaleType, theKey=theKey, theLen=theLen)
+
+    print(theType, end=' - ')
+    print(theKey, end=' ')
+    print(theScaleType)
+    print(progression)
+    return (theType, theScaleType, theKey, progression)
+
+  def getTime(self):
+    dt = random.randint(10,60)
+    dt = dt*1.00001
+    return dt
 
 def main():
   mus = AiPiano()
 
-  prog = mus.getProgression('major','A', 5)
+  while True:
+    theType, theScaleType, theKey, progression = mus.getSongBase()
+    print(theType, end=' - ')
+    print(theKey, end=' ')
+    print(theScaleType)
+    print(progression)
+    
+    dt = mus.getTime()
+    print('Time per segment = ', end='')
+    print(dt)
 
-  print(prog)
+    # Set the type
+    mus.setType(theType)
 
-  for i in range(20):
-    print(mus.getTypeRand())
+    for val in progression:
+      mus.setKey(val)
+      t.sleep(dt)
+
 
 #
 #  for x in mus.chromatic:
