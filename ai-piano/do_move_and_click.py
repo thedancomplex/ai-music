@@ -156,8 +156,16 @@ def main():
     print('Time per segment = ', end='')
     print(dt)
 
-    # Set the type
-    mus.setType(theType)
+    ## Set the type
+
+    # Random - AIPIANO1
+    #mus.setType(theType)
+
+    # Set to Ionlan - AIPIANO2
+    #mus.setType('Ionlan')
+
+    # Set to Ionlan - AIPIANO3
+    mus.setType('Dorian')
 
     for val in progression:
       mus.setKey(val)
