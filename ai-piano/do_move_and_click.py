@@ -165,7 +165,10 @@ def main():
     #mus.setType('Ionlan')
 
     # Set to Ionlan - AIPIANO3
-    mus.setType('Dorian')
+    #mus.setType('Dorian')
+
+    # Set to Phryglan - AIPIANO4
+    mus.setType('Phryglan')
 
     for val in progression:
       mus.setKey(val)
