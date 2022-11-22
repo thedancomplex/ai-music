@@ -1,6 +1,10 @@
 # AI Music 
 AI Music Creating Workspace based on multiple other projects
 
+## TODO
+* Make an auto install
+* Get visualisations
+
 ## AI Piano
 This project uses the Piano Roll and automatically changes the key and the type of scal automaticall.  It also picks the number of repetitions and time between changes automatically.
 
